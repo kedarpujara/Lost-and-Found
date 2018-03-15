@@ -1,0 +1,47 @@
+body{
+	background: url(http://blog.hostbaby.com/wp-content/uploads/2013/07/scuffedstatic_blue_1920x1234.jpg);
+	color: white;
+	background-size: cover;
+	background-position: center;
+}
+
+
+h1 {
+	font-weight: 550;
+	font-size: 60px;
+	padding-bottom: 2%;
+}
+
+h3 {
+	font-size: 38px;	
+	padding-top: 2%;
+	font-weight: lighter;
+}
+
+
+
+
+.container {
+	text-align: center;
+	padding-top: 10%;
+}
+.btn-lg {
+	padding: 3%;
+}
+#LostItem {
+	margin-right: 5%;
+	margin-top: 5%;
+}
+#FoundItem {
+	margin-left: 5%;
+	margin-top: 5%;
+}
+.navbar-brand {
+	font-size: 35px;
+	font-weight: bold;
+
+}
+.navbar-right {
+	font-size: 23px;
+	font-weight: lighter;
+}
