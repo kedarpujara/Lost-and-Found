@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LostFound</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	 	<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+	   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+		<link rel="stylesheet" type="text/css" href="css/lost.css">
+
+
+</head>
+<body>
+
+	<nav class="navbar navbar-default sticky-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/home.html">NeverLost</a>
+	    </div>
+	    <div class="nav navbar-nav navbar-left">
+        <form class="form-inline" action="/action_page.php">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-success" type="submit">Search</button>
+        </form>
+      </div>
+	    <ul class="nav navbar-nav navbar-right">
+			<li id="SearchDBButton"><a href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/login.html">Search Database</a></li>
+
+	      	<li id="LogInButton"><a href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/login.html">Sign Up</a></li>
+	      	<li><a id="SignUpButton" href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/login.html">Log In</a></li>	
+	      	<li><a id="ContactUsButton" href="#">Contact Us</a></li>	 
+ 
+	    	</ul>
+	  </div>
+	</nav>
+
+	<div class="wrapper">
+		<div class="heading">
+			<h1>Report Lost Item</h1>
+		</div>
+		<hr class="hr">
+		<br>
+		<div class="reportDiv">
+			<form class="report">
+				<h3>Give a general description for the lost item</h3>
+				<div class="dropdown">
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+						Pick an item 
+					</button>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#">Link1 </a>
+						<a class="dropdown-item" href="#">Link2 </a>
+					</div>
+				</div>
+
+
+				<select name="item" class="bottomGapReport">					
+					<option>Clothing</option>
+					<option>Electronics</option>
+					<option>Type of Book</option>
+				</select>
+					
+<!-- 					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="#">Clothing</a></li>
+						<li><a href="#">Electronics</a></li>
+						<li><a href="#">Type of Book</a></li>
+					</ul>
+				</div> -->
+				<h3>Please add more details </h3>
+				<textarea class="bottomGapReport2" rows="6" cols="50"></textarea>
+				<br>
+				<h3>When was it lost? (Try to be as exact as possible)</h3>
+				<p class="bottomGapReport2">Include a calendar</p>
+				<br>
+
+				<h3>Where was it lost? (Try to be as exact as possible) </h3>
+				<p>Include embedded google maps in</p>
+
+			</form>
+		</div>
+
+		<div class="submit">
+			<button id="submitLost">Submit</button>
+		</div>
+
+	</div>
+</body>
+</html>
