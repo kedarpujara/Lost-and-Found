@@ -1,0 +1,86 @@
+body {
+	background: url(http://blog.hostbaby.com/wp-content/uploads/2013/07/scuffedstatic_blue_1920x1234.jpg);
+}
+h1{
+	margin-bottom: -1%;
+	margin-top: 2%;
+	font-size: 40px;
+}
+h3, p {
+	color: white;
+}
+
+hr {
+	width: 75%
+}
+.wrapper {
+	overflow: hidden;
+	margin: auto;
+	margin-left: 30%;
+}
+
+.heading{
+	text-align: center;
+	margin-bottom: 50px;
+	color: white;
+}
+
+.report {
+	margin-left: 3%;
+}
+
+.dropdown-item, .dropdown-item {
+	color: black;
+}
+
+.bottomGapReport {
+	margin-bottom: 3%;
+}
+
+#submitLost {
+	margin-top: 5%;
+	width: 100px;
+	height: 30px;
+	margin-left: 20%;
+}
+
+.submitB {
+	margin-left: 8%
+	margin-top: 5%;
+	text-align: center;
+}
+
+.navbar-brand {
+	font-size: 35px;
+	font-weight: bold;
+	color: #179b77 !important;
+
+}
+.navbar-right {
+	font-size: 23px;
+	font-weight: lighter;
+}
+.navbar-left {
+  margin-left: 2%;
+  margin-top: 0.5%
+}
+ul.nav a:hover { 
+  color: #179b77 !important; 
+}
+.navbar-header a:hover {
+  color: black !important;
+}
+
+#map {
+	height: 30vh;        
+    width: 42vh;
+    margin-top: 2%;      
+}
+
+#submitForm {
+	margin-top: 3%;
+	text-align: center;
+	margin-left: 12%;
+	margin-bottom: 8%;
+	font-size: 16pt;
+}
