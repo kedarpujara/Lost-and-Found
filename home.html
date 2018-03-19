@@ -9,6 +9,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	 <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
 
 	<link rel="stylesheet" type="text/css" href="css/home.css">
 
@@ -19,9 +23,16 @@
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/home.html">NeverLost</a>
 	    </div>
+	    <div class="nav navbar-nav navbar-left">
+        <form class="form-inline" action="/action_page.php">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-success" type="submit">Search</button>
+        </form>
+      </div>
 	    <ul class="nav navbar-nav navbar-right">
-	      	<li id=""><a href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/SampleLogin/SampleSignup/sign-up-login-form-1/index.html#">Sign Up</a></li>
-	      	<li><a id="SignUpButton" href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/SampleLogin/SampleSignup/sign-up-login-form-1/index.html#">Log In</a></li>	
+	    	<li id="SearchDBButton"><a href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/lookupDatabase.html">Search Database</a></li>
+	      	<li id="LogInButton"><a href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/login.html">Sign Up</a></li>
+	      	<li><a id="SignUpButton" href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/login.html">Log In</a></li>
 	      	<li><a id="ContactUsButton" href="#">Contact Us</a></li>	 
  
 	    	</ul>
@@ -41,6 +52,7 @@
 			<div class="largeButtons">
 				<button type="button" id="LostItem" class="btn btn-default btn-lg">Report Lost Item </button>
 				<button type="button" id="FoundItem" class="btn btn-primary btn-lg">Report Found Item</button>
+				<button type="button" id="LookUpItem" class="btn btn-primary btn-lg">Lookup Item in Database</button>
 			</div>
 			
 		</div>
@@ -48,5 +60,3 @@
 	</div>
 	<script type="text/javascript" src="js/home.js"></script>
 
-</body>
-</html>
