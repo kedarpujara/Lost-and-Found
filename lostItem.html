@@ -2,21 +2,65 @@
 <html>
 <head>
 	<title>LostFound</title>
+	    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	    <meta charset="utf-8">
+	    <style>
+	      /* Always set the map height explicitly to define the size of the div
+	       * element that contains the map. */
+	      #map {
+	        height: 50%;
+	        width: 50%
+	        margin-top: 10%;
+	      }
+	      /* Optional: Makes the sample page fill the window. */
+	      html, body {
+	        height: 100%;
+	        margin: 0;
+	        padding: 0;
+	      }
+	      #floating-panel {
+	        position: absolute;
+	        top: 10px;
+	        left: 25%;
+	        z-index: 5;
+	        background-color: #fff;
+	        padding: 5px;
+	        border: 1px solid #999;
+	        text-align: center;
+	        font-family: 'Roboto','sans-serif';
+	        line-height: 30px;
+	        padding-left: 10px;
+	      }
+	    </style>
+		<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/jquery.datetimepicker.full.js"></script>
 	 	<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
 	   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-		<link rel="stylesheet" type="text/css" href="css/lost.css">
+		<link rel="stylesheet" type="text/css" href="css/lookupDatabase.css">
+
+
 
 
 </head>
 <body>
+	
+<!-- 	<div id="floating-panel">
+					<input type="textbox" id="address" placeholder="Enter address here" value="Sydney, NSW">
+					<input type="button" id="submit" value="Geocode">
+	</div> -->
+	
+	
+	
 
 	<nav class="navbar navbar-default sticky-top">
+
+
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/home.html">NeverLost</a>
@@ -28,7 +72,7 @@
         </form>
       </div>
 	    <ul class="nav navbar-nav navbar-right">
-			<li id="SearchDBButton"><a href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/login.html">Search Database</a></li>
+			<li id="SearchDBButton"><a href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/lookupDatabase.html">Search Database</a></li>
 
 	      	<li id="LogInButton"><a href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/login.html">Sign Up</a></li>
 	      	<li><a id="SignUpButton" href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/login.html">Log In</a></li>	
@@ -37,25 +81,18 @@
 	    	</ul>
 	  </div>
 	</nav>
+	
 
-	<div class="wrapper">
+
 		<div class="heading">
 			<h1>Report Lost Item</h1>
 		</div>
 		<hr class="hr">
 		<br>
+	<div class="wrapper">
 		<div class="reportDiv">
 			<form class="report">
 				<h3>Give a general description for the lost item</h3>
-				<div class="dropdown">
-					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-						Pick an item 
-					</button>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">Link1 </a>
-						<a class="dropdown-item" href="#">Link2 </a>
-					</div>
-				</div>
 
 
 				<select name="item" class="bottomGapReport">					
@@ -64,29 +101,82 @@
 					<option>Type of Book</option>
 				</select>
 					
-<!-- 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Clothing</a></li>
-						<li><a href="#">Electronics</a></li>
-						<li><a href="#">Type of Book</a></li>
-					</ul>
-				</div> -->
-				<h3>Please add more details </h3>
-				<textarea class="bottomGapReport2" rows="6" cols="50"></textarea>
-				<br>
-				<h3>When was it lost? (Try to be as exact as possible)</h3>
-				<p class="bottomGapReport2">Include a calendar</p>
-				<br>
 
-				<h3>Where was it lost? (Try to be as exact as possible) </h3>
-				<p>Include embedded google maps in</p>
+				<h3>Please add more details </h3>
+				<textarea class="bottomGapReport" rows="6" cols="50"></textarea>
+				<br>
+				<h3>When was it lost? </h3>
+				<input class="bottomGapReport" id="datetime">
+
+				<h3>Where was it lost?  </h3>
+				<input id="address" type="textbox" value="Sydney, NSW">
+				<input id="submit" type="button" value="Geocode">
+				<div id="map"></div>	
+				
+			
+				<button id="submitForm" class="btn btn-primary">Submit</button>
 
 			</form>
 		</div>
-
-		<div class="submit">
-			<button id="submitLost">Submit</button>
-		</div>
-
 	</div>
-</body>
+
+	<!-- 	<div class="submit">
+			<button id="submitLost">Submit</button>
+		</div> -->
+
+<!-- 	<div id="floating-panel">
+		<input type="textbox" id="address" placeholder="Enter address here" value="Sydney, NSW">
+		<input type="button" id="submit" value="Geocode">
+	
+	</div> -->
+<!-- 	<script>console.log("Gets before mapp");</script>
+		<div id="map">
+			<p> hello </p>
+		</div>
+	<script>console.log("Gets after map");</script> -->
+
+	
+	
+
+	
+
+
+	<!-- JQuery for the date and time picker  -->
+	<script>
+		$("#datetime").datetimepicker();
+	</script>
+  
+    <!-- Using the Google Maps Geocder API to embed a map on the page -->
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9BHiLBv1clpiXdL2uE2NngWCly45MblU&callback=initMap">
+    </script>
+  </body>
 </html>
