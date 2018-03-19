@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NeverLost</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.datetimepicker.full.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	 <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+
+	<link rel="stylesheet" type="text/css" href="css/lookupDatabase.css">
+
+</head>
+<body>
+	<nav class="navbar navbar-default sticky-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/home.html">NeverLost</a>
+	    </div>
+	    <ul class="nav navbar-nav navbar-right">
+	    	<li id="SearchDBButton"><a href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/lookupDatabase.html">Search Database</a></li>
+	      	<li id="LogInButton"><a href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/login.html">Sign Up</a></li>
+	      	<li><a id="SignUpButton" href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/login.html">Log In</a></li>
+	      	<li><a id="ContactUsButton" href="#">Contact Us</a></li>	 
+ 
+	    	</ul>
+	  </div>
+	</nav>
+		<div class="heading">
+			<h1>Search Lost Item</h1>
+		</div>
+		<hr class="hr">
+		<br>
+	<div class="wrapper">
+		<div class="reportDiv">
+			<form class="report">
+				<h3>Give a general description for the lost item</h3>
+<!-- 				<div class="dropdown">
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+						Pick an item 
+					</button>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#">Link1 </a>
+						<a class="dropdown-item" href="#">Link2 </a>
+					</div>
+				</div> -->
+
+
+				<select name="item" class="bottomGapReport">					
+					<option>Select Item</option>
+					<option>Clothing</option>
+					<option>Electronics</option>
+					<option>Type of Book</option>
+					<option>Utensils</option>
+					<option>Water Bottle</option>
+					<option>Other</option>
+				</select>
+
+
+				<br>
+				<br>
+
+				<h3>Please add more details </h3>
+				<textarea class="bottomGapReport" rows="6" cols="50"></textarea>
+				<br>
+				<h3>When was it lost?</h3>
+				<input class="bottomGapReport" id="datetime">				
+
+				<h3>Where was it lost? </h3>
+				
+
+      			<input id="address" type="textbox" value="Sydney, NSW">
+      			<input id="submit" type="button" value="Geocode">
+    			
+
+				<div id="map">
+
+				<button id="submitForm" class="btn btn-primary">Submit</button>
+
+			</form>
+		</div>
+
+	</div>
+
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		load_json_data('item');
+
+		function load_json_data(id) {
+			var html_code = '';
+			$.getJSON('json/generalDescription.json', function(data){
+				html_code += '<option value=""> Select ' + id + '</option>';
+				$.each(data, function(key, value) {
+					if(id == 'itemLost') 
+					{
+						html_code += 'option value=""'+ value.id + '">' + value.name
+						+ '</option>';
+					}
+				});
+			});
+			$('#'+id).html(html_code)
+		}
+		$(document).on('change', '#itemLost', function(){
+			var item_id = $(this).val();
+			if(item_id != '') {
+				load_json_data('itemLost');
+			}
+			else {
+
+			}
+		});
+	});
+</script>
+<script>
+		$("#datetime").datetimepicker();
+</script>
+
+
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9BHiLBv1clpiXdL2uE2NngWCly45MblU&callback=initMap">
+    </script>
+
+</html>
+
+
+
+
+
