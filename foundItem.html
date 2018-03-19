@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LostFound</title>
+		<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/jquery.datetimepicker.full.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+	   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+		
+		<link rel="stylesheet" type="text/css" href="css/lookupDatabase.css">
+
+	
+
+
+</head>
+<body>
+	<nav class="navbar navbar-default sticky-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/home.html">NeverLost</a>
+	    </div>
+	    <div class="nav navbar-nav navbar-left">
+        <form class="form-inline" action="/action_page.php">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-success" type="submit">Search</button>
+        </form>
+      </div>
+	    <ul class="nav navbar-nav navbar-right">
+	    	<li id="SearchDBButton"><a href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/lookupDatabase.html">Search Database</a></li>
+	      	<li id="LogInButton"><a href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/login.html">Sign Up</a></li>
+	      	<li><a id="SignUpButton" href="file:///Users/Kedar/Documents/WebDev/UdemyCourse/LostFound/login.html">Log In</a></li>	
+	      	<li><a id="ContactUsButton" href="#">Contact Us</a></li>	 
+ 
+	    	</ul>
+	  </div>
+	</nav>
+
+	
+		<div class="heading">
+			<h1>Report Found Item</h1>
+		</div>
+		<hr class="hr">
+		<br>
+		<div class="wrapper">
+		<div class="reportDiv">
+			<form class="report">
+				<h3>Give a general description for the found item</h3>
+				<select name="item" class="bottomGapReport">					
+					<option>Select Item</option>
+					<option>Clothing</option>
+					<option>Electronics</option>
+					<option>Type of Book</option>
+				</select>
+					
+
+				<h3>Please add more details </h3>
+				<textarea class="bottomGapReport" rows="6" cols="50"></textarea>
+				
+				<h3>When was it found?</h3>
+				<input class="bottomGapReport" id="datetime">
+
+				
+
+
+				<h3>Where was it found?</h3>
+				 
+				<input id="address" type="textbox" value="San Diego, CA">
+				<input id="submit" type="button" value="Geocode">
+				
+				
+				<div id="map"></div>	
+				
+				<button id="submitForm" class="btn btn-primary">Submit</button>				
+
+
+			</form>
+		</div>
+
+<!-- 		<div class="submit">
+			<button id="submitLost">Submit</button>
+		</div> -->
+
+	</div>
+
+
+	 <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9BHiLBv1clpiXdL2uE2NngWCly45MblU&callback=initMap">
+    </script>
+
+
+
+	<script>
+		$("#datetime").datetimepicker();
+	</script>
+</body>
+</html>
